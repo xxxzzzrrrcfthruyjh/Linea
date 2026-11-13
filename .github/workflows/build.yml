@@ -9,7 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: unzip -q Linea.zip
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -18,8 +17,7 @@ jobs:
         with:
           gradle-version: "8.14.3"
       - run: gradle assembleRelease
-        working-directory: Linea
       - uses: actions/upload-artifact@v4
         with:
           name: Linea-apk
-          path: Linea/app/build/outputs/apk/release/*.apk
+          path: app/build/outputs/apk/release/*.apk
